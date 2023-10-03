@@ -1,26 +1,21 @@
-// import mysql from "mysql2";
-// const connect = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "1234",
-//     port: 3306,
-//     database: "db_youtube",
-// });
 
-import Sequelize from "sequelize"
 
-const sequelize = new Sequelize("db_youtube", "root", "1234", {
-    host: "localhost",
-    port: "3306",
-    dialect: "mysql" /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
+// yarn add mysql2
+// yarn add sequelize
+
+import { Sequelize } from "sequelize";
+import config from "../config/config.js";
+
+const sequelize = new Sequelize(config.database, config.user, config.pass, {
+    host: config.host,
+    port: config.port,
+    dialect: config.dialect
 });
 
-export default sequelize
+export default sequelize;
 
-// try {
-//     sequelize.authenticate();
-//     console.log("connect sucessfully");
-// } catch (err) {
-//     console.log(err);
-//     console.log("connect failed");
-// }
+
+// yarn add sequelize-auto
+
+// yarn sequelize-auto -h localhost -d db_youtube -u root -x 1234 -p 3306 --dialect mysql -o ./src/models -l esm
+

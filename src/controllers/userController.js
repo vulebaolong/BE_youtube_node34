@@ -2,6 +2,7 @@ import initModels from "../models/init-models.js";
 import sequelize from "../models/connect.js";
 import bcrypt from "bcrypt";
 import { createToken, decodeToken } from "../config/jwt.js";
+import { toiUuHinh } from "./uploadController.js";
 
 let model = initModels(sequelize);
 
@@ -117,7 +118,25 @@ const updateUser = async (req, res) => {
     res.send(result);
 };
 
-const updateAvatar = (req,res) => { 
-    res.send(updateAvatar);
- }
+const updateAvatar = async (req, res) => {
+    const file = req.file;
+    console.log(file);
+
+    // const { token } = req.headers;
+
+    // const infoUser = decodeToken(token);
+
+    // const user_id = infoUser.data.user_id;
+
+    // const user = await model.users.findOne({
+    //     where: {
+    //         user_id,
+    //     },
+    // });
+
+    toiUuHinh("file.name");
+
+
+    res.send(file);
+};
 export { userSignUp, userLogin, userLoginFacebook, updateUser, updateAvatar };

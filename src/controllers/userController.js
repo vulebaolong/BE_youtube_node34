@@ -139,4 +139,5 @@ const updateAvatar = async (req, res) => {
 
     res.send(file);
 };
+
 export { userSignUp, userLogin, userLoginFacebook, updateUser, updateAvatar };
